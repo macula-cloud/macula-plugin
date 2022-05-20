@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>macula-cloud</groupId>
+		<artifactId>macula-plugin</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<artifactId>macula-plugin-alimq</artifactId>
+
+	<properties>
+		<aliyun-one.version>1.8.4.Final</aliyun-one.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.aliyun.openservices</groupId>
+			<artifactId>ons-client</artifactId>
+			<version>${aliyun-one.version}</version>
+		</dependency>
+	</dependencies>
+</project>

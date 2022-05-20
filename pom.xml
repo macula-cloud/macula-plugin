@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>macula-cloud</groupId>
+		<artifactId>macula-engine</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>macula-plugin</artifactId>
+	<packaging>pom</packaging>
+	<description>Macula Plugin Projects</description>
+
+	<properties>
+		<macula-plugin.version>1.0.0</macula-plugin.version>
+		<druid.version>1.2.9</druid.version>
+		<hibersap.version>1.4.0</hibersap.version>
+		<sapjco3.version>3.0.0</sapjco3.version>
+	</properties>
+
+	<licenses>
+		<license>
+			<name>The MIT License</name>
+			<url>http://opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/macula-cloud/macula-plugin</url>
+		<connection> scm:git:git://github.com/macula-cloud/macula-plugin.git</connection>
+		<developerConnection>scm:git:ssh://github.com/macula-cloud/macula-plugin.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<developers>
+		<developer>
+			<id>macula-plugin</id>
+			<name>Jokeway</name>
+			<email>jokeway@gmail.com</email>
+			<timezone>+8</timezone>
+		</developer>
+	</developers>
+
+	<modules>
+		<module>macula-plugin-alimq</module>
+		<module>macula-plugin-cainiao</module>
+		<module>macula-plugin-datalog</module>
+		<module>macula-plugin-dataset</module>
+		<module>macula-plugin-execlog</module>
+		<module>macula-plugin-flow</module>
+		<module>macula-plugin-registry</module>
+		<module>macula-plugin-sap</module>
+		<module>macula-plugin-social</module>
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>macula-engine-assistant</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<!-- Macula Plugin  Extension Packages-->
+		<dependencies>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>macula-plugin-alimq</artifactId>
+				<version>${macula-plugin.version}</version>
+			</dependency>
+			<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>macula-plugin-cainiao</artifactId>
+			<version>${macula-plugin.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>macula-plugin-datalog</artifactId>
+			<version>${macula-plugin.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>macula-plugin-dataset</artifactId>
+			<version>${macula-plugin.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>macula-plugin-execlog</artifactId>
+			<version>${macula-plugin.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>macula-plugin-flow</artifactId>
+			<version>${macula-plugin.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>macula-plugin-registry</artifactId>
+			<version>${macula-plugin.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>macula-plugin-sap</artifactId>
+			<version>${macula-plugin.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>macula-plugin-social</artifactId>
+			<version>${macula-plugin.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid-spring-boot-starter</artifactId>
+				<version>${druid.version}</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.hibersap/hibersap-core -->
+			<dependency>
+				<groupId>org.hibersap</groupId>
+				<artifactId>hibersap-core</artifactId>
+				<version>${hibersap.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.hibersap/hibersap-jco -->
+			<dependency>
+				<groupId>org.hibersap</groupId>
+				<artifactId>hibersap-jco</artifactId>
+				<version>${hibersap.version}</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.hibersap/com.sap.conn.jco.sapjco3 -->
+			<dependency>
+				<groupId>org.hibersap</groupId>
+				<artifactId>com.sap.conn.jco.sapjco3</artifactId>
+				<version>${sapjco3.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+</project>

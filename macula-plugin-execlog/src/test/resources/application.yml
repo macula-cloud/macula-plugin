@@ -1,0 +1,15 @@
+spring:
+   datasource:
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://api.ebestpet.com:3306/macula-cloud?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=CTT
+      username: root
+      password: macula@^cloud$
+   jpa:
+      database: MYSQL
+      show-sql: true
+      open-in-view: false
+   redis:
+      host: 10.87.140.81
+      port: 6381
+      password: redis%%sccdev321
+      database: 3

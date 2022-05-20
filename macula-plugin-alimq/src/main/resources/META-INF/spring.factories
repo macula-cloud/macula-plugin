@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.macula.cloud.mq.configure.AliMQAutoConfiguration
