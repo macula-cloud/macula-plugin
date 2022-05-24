@@ -6,8 +6,8 @@ import org.macula.plugin.datalog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(classes = DataAuditApplication.class)
-public class DataAuditTests {
+@SpringBootTest(classes = DatalogApplication.class)
+public class DatalogApplicationTests {
 
 	@Autowired
 	private UserService userService;

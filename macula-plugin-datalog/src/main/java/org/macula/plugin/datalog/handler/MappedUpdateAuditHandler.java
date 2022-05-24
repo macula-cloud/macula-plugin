@@ -115,7 +115,7 @@ public class MappedUpdateAuditHandler extends AbstractMappedAuditHandler {
 						for (int col = 0; col < rowBeforeUpdate.length; col++) {
 							if (rowBeforeUpdate[col] != null	&& !rowBeforeUpdate[col].equals(rowAfterUpdate[col])
 								|| rowBeforeUpdate[col] == null && rowAfterUpdate[col] != null) {
-								eventContext.appendEvent(tableName, updateColumnListMap.get(tableName).get(col), null,
+								changedContext.appendEvent(tableName, updateColumnListMap.get(tableName).get(col), null,
 										pKey, OperationUtils.UPDATE, rowBeforeUpdate[col], rowAfterUpdate[col]);
 							}
 						}

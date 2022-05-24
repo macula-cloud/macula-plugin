@@ -113,7 +113,7 @@ public class MappedDeleteAuditHandler extends AbstractMappedAuditHandler {
 						}
 					}
 					primaryKeyVal.forEach((table, vals) -> {
-						eventContext.appendEvent(table,
+						changedContext.appendEvent(table,
 								StringUtils.collectionToCommaDelimitedString(primaryKeyMap.get(table)), null,
 								vals.size() > 1 ? JSONUtil.toJsonStr(vals)
 										: vals.entrySet().iterator().next().getValue(),

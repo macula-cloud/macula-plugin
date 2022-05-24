@@ -1,1 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+	org.macula.plugin.datalog.configure.MappedAuditAutoConfiguration

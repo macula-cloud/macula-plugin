@@ -7,7 +7,7 @@ import java.util.Set;
 import com.alibaba.druid.sql.ast.SQLStatement;
 import com.alibaba.druid.sql.ast.statement.SQLTableSource;
 import com.alibaba.druid.sql.parser.SQLStatementParser;
-import org.macula.plugin.datalog.event.EventContext;
+import org.macula.plugin.datalog.event.ChangedContext;
 import org.macula.plugin.datalog.meta.MetadataReader;
 import org.macula.plugin.datalog.util.DruidAnalysisUtils;
 
@@ -26,7 +26,7 @@ public abstract class AbstractMappedAuditHandler implements MappedAuditHandler {
 	private SQLStatement sqlStatement;
 
 	protected MetadataReader metadataReader;
-	protected EventContext eventContext;
+	protected ChangedContext changedContext;
 
 	protected abstract SQLStatement parseSQLStatement(SQLStatementParser statementParser);
 
@@ -72,11 +72,11 @@ public abstract class AbstractMappedAuditHandler implements MappedAuditHandler {
 	}
 
 	/**
-	 * @param eventContext the eventContext to set
+	 * @param changedContext the changedContext to set
 	 */
 	@Override
-	public void setEventContext(EventContext eventContext) {
-		this.eventContext = eventContext;
+	public void setEventContext(ChangedContext changedContext) {
+		this.changedContext = changedContext;
 	}
 
 }

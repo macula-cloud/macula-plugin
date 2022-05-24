@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
-public @interface ServiceInvokeProxy {
+public @interface Execlog {
 
 	String key() default "args[0]";
 

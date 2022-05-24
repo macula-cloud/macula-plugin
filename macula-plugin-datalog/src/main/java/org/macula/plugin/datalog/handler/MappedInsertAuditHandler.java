@@ -71,7 +71,7 @@ public class MappedInsertAuditHandler extends AbstractMappedAuditHandler {
 		//								if (i == 1) {
 		//									primaryKey = resultSet.getObject(i);
 		//								} else {
-		//									eventContext.appendEvent(table, columnList.get(i - 2), null, primaryKey,
+		//									changedContext.appendEvent(table, columnList.get(i - 2), null, primaryKey,
 		//											OperationUtils.INSERT, null, resultSet.getObject(i));
 		//								}
 		//							}

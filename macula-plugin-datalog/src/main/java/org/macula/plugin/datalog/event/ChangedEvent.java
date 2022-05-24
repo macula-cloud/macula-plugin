@@ -10,11 +10,12 @@ import lombok.ToString;
 public class ChangedEvent {
 
 	private final String traceId;
+	private final String spanId;
 	private final String userId;
 	private final String applicationId;
 	private final String table;
 	private final String column;
-	private final Long parentId;
+	private final Object parentId;
 	private final Object entityId;
 	private final String operation;
 	private final Object oldValue;

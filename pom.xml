@@ -2,18 +2,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>macula-cloud</groupId>
-		<artifactId>macula-engine</artifactId>
-		<version>1.0.0</version>
-	</parent>
-
-	<artifactId>macula-plugin</artifactId>
+	<groupId>macula-cloud</groupId>
+	<artifactId>macula-plugins</artifactId>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 	<description>Macula Plugin Projects</description>
 
 	<properties>
+			<!-- Project Settings-->
+		<java.version>1.8</java.version>
+		<resource.delimiter>@</resource.delimiter>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- Macula Package Settings -->
+		<macula-engine.version>1.0.0</macula-engine.version>
 		<macula-plugin.version>1.0.0</macula-plugin.version>
+		<!-- Common Packages Settings -->
 		<druid.version>1.2.9</druid.version>
 		<hibersap.version>1.4.0</hibersap.version>
 		<sapjco3.version>3.0.0</sapjco3.version>
@@ -60,8 +66,32 @@
 			<artifactId>macula-engine-assistant</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -74,47 +104,56 @@
 				<version>${macula-plugin.version}</version>
 			</dependency>
 			<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>macula-plugin-cainiao</artifactId>
-			<version>${macula-plugin.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>macula-plugin-datalog</artifactId>
-			<version>${macula-plugin.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>macula-plugin-dataset</artifactId>
-			<version>${macula-plugin.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>macula-plugin-execlog</artifactId>
-			<version>${macula-plugin.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>macula-plugin-flow</artifactId>
-			<version>${macula-plugin.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>macula-plugin-registry</artifactId>
-			<version>${macula-plugin.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>macula-plugin-sap</artifactId>
-			<version>${macula-plugin.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>macula-plugin-social</artifactId>
-			<version>${macula-plugin.version}</version>
-		</dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>macula-plugin-cainiao</artifactId>
+				<version>${macula-plugin.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>macula-plugin-datalog</artifactId>
+				<version>${macula-plugin.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>macula-plugin-dataset</artifactId>
+				<version>${macula-plugin.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>macula-plugin-execlog</artifactId>
+				<version>${macula-plugin.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>macula-plugin-flow</artifactId>
+				<version>${macula-plugin.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>macula-plugin-registry</artifactId>
+				<version>${macula-plugin.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>macula-plugin-sap</artifactId>
+				<version>${macula-plugin.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>macula-plugin-social</artifactId>
+				<version>${macula-plugin.version}</version>
+			</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
+			<!-- Macula Engine  Extension Package -->
+			<dependency>
+				<groupId>macula-cloud</groupId>
+				<artifactId>macula-engine</artifactId>
+				<version>${macula-engine.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>druid-spring-boot-starter</artifactId>

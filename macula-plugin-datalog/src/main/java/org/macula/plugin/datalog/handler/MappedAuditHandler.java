@@ -1,6 +1,6 @@
 package org.macula.plugin.datalog.handler;
 
-import org.macula.plugin.datalog.event.EventContext;
+import org.macula.plugin.datalog.event.ChangedContext;
 
 public interface MappedAuditHandler {
 
@@ -8,5 +8,5 @@ public interface MappedAuditHandler {
 
 	void afterHandle();
 
-	void setEventContext(EventContext eventContext);
+	void setEventContext(ChangedContext changedContext);
 }

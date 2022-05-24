@@ -1,13 +1,13 @@
-package org.macula.plugin.datalog;
+package org.macula.plugin.execlog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DataAuditApplication {
+public class ExecutionLogApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DataAuditApplication.class, args);
+		SpringApplication.run(ExecutionLogApplication.class, args);
 	}
 
 }

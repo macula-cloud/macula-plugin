@@ -1,15 +1,19 @@
+# DataSource Config
 spring:
-   datasource:
-      type: com.alibaba.druid.pool.DruidDataSource
-      url: jdbc:mysql://api.ebestpet.com:3306/macula-cloud?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=CTT
-      username: root
-      password: macula@^cloud$
-   jpa:
-      database: MYSQL
-      show-sql: true
-      open-in-view: false
-   redis:
-      host: 10.87.140.81
-      port: 6381
-      password: redis%%sccdev321
-      database: 3
+  application:
+    name: macula-plugin-execlog
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: root
+    password: test
+
+  h2:
+    console:
+      enabled: true
+      
+# Logger Config
+logging:
+  level:
+    # root: debug
+    org.macula.plugin: trace

@@ -1,15 +1,17 @@
-package org.macula.plugin.datalog.configuration;
+package org.macula.plugin.datalog.configure;
 
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 import lombok.extern.slf4j.Slf4j;
+import org.macula.plugin.datalog.event.ChangedContext;
+import org.macula.plugin.datalog.event.ChangedContextProvider;
 import org.macula.plugin.datalog.event.ChangedEvent;
-import org.macula.plugin.datalog.event.EventContext;
-import org.macula.plugin.datalog.event.EventContextAware;
 import org.macula.plugin.datalog.interceptor.MappedAuditInterceptor;
 import org.macula.plugin.datalog.meta.DatabaseMetadataReader;
 import org.macula.plugin.datalog.meta.MetadataReader;
@@ -25,16 +27,16 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @AutoConfigureAfter({
 		SqlInitializationAutoConfiguration.class })
-public class MappedAuditConfiguration {
+public class MappedAuditAutoConfiguration {
 	@PostConstruct
 	public void postConstruct() {
 		log.debug("[Macula] |- Plugin [Datalog] Auto Configure.");
 	}
 
 	@Bean
-	public MappedAuditInterceptor mybatisAuditlogInterceptor(EventContextAware eventContextAware, MetadataReader metadataReader) {
+	public MappedAuditInterceptor mybatisAuditlogInterceptor(ChangedContextProvider changedContextProvider, MetadataReader metadataReader) {
 		MappedAuditInterceptor interceptor = new MappedAuditInterceptor();
-		interceptor.setEventContextAware(eventContextAware);
+		interceptor.setChangedContextProvider(changedContextProvider);
 		interceptor.setMetadataReader(metadataReader);
 
 		log.debug("[Macula] |- Bean [MappedAuditInterceptor] Auto Configure.");
@@ -43,7 +45,7 @@ public class MappedAuditConfiguration {
 
 	@Bean
 	@ConditionalOnMissingBean(MetadataReader.class)
-	public DatabaseMetadataReader DatabaseMetadataReader(DataSource dataSource,
+	public MetadataReader DatabaseMetadataReader(DataSource dataSource,
 			/* 需要在执行SQL初始化脚本后，不能移除这个依赖 */
 			SqlDataSourceScriptDatabaseInitializer db) throws SQLException {
 		log.debug("[Macula] |- Bean [DatabaseMetadataReader] Auto Configure.");
@@ -53,24 +55,19 @@ public class MappedAuditConfiguration {
 	}
 
 	@Bean
-	@ConditionalOnMissingBean(EventContextAware.class)
-	public EventContextAware createEventContextAware() {
-		log.debug("[Macula] |- Bean [EventContextAware] Auto Configure.");
-		return new EventContextAware() {
+	@ConditionalOnMissingBean(ChangedContextProvider.class)
+	public ChangedContextProvider createEventContextProvider() {
+		log.debug("[Macula] |- Bean [ChangedContextProvider] Auto Configure.");
+		return new ChangedContextProvider() {
 
 			@Override
-			public EventContext getEventContext() {
-				return new EventContext();
+			public ChangedContext getEventContext() {
+				return new ChangedContext();
 			}
 
 			@Override
-			public void processEvent(EventContext context) {
-				if (context != null) {
-					List<ChangedEvent> events = context.getChangedEvents();
-					if (events != null) {
-						System.out.println("===== Events:" + events);
-					}
-				}
+			public List<Consumer<ChangedEvent>> getConsumers() {
+				return Arrays.asList((event) -> log.info("===== Event: [{}]", event));
 			}
 		};
 	}

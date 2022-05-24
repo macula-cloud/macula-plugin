@@ -12,8 +12,8 @@ import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Plugin;
 import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.session.Configuration;
-import org.macula.plugin.datalog.event.EventContext;
-import org.macula.plugin.datalog.event.EventContextAware;
+import org.macula.plugin.datalog.event.ChangedContext;
+import org.macula.plugin.datalog.event.ChangedContextProvider;
 import org.macula.plugin.datalog.handler.MappedAuditHandler;
 import org.macula.plugin.datalog.meta.MetadataReader;
 import org.macula.plugin.datalog.util.MappedAuditHandlerFactory;
@@ -27,7 +27,7 @@ import org.macula.plugin.datalog.util.SQLParseUtils;
 public class MappedAuditInterceptor implements Interceptor {
 
 	@Setter
-	private EventContextAware eventContextAware;
+	private ChangedContextProvider changedContextProvider;
 	@Setter
 	private MetadataReader metadataReader;
 
@@ -44,11 +44,10 @@ public class MappedAuditInterceptor implements Interceptor {
 				BoundSql boundSql = mappedStatement.getBoundSql(parameter);
 				Configuration configuration = mappedStatement.getConfiguration();
 				String sql = SQLParseUtils.getParameterizedSql(configuration, boundSql);
-				MappedAuditHandler handler = MappedAuditHandlerFactory.createEntityAuditHandler(connection,
-						sqlCommandType, sql, metadataReader);
+				MappedAuditHandler handler = MappedAuditHandlerFactory.createEntityAuditHandler(connection, sqlCommandType, sql, metadataReader);
 
-				EventContext eventContext = eventContextAware.getEventContext();
-				handler.setEventContext(eventContext);
+				ChangedContext changedContext = changedContextProvider.getEventContext();
+				handler.setEventContext(changedContext);
 
 				if (handler != null) {
 					handler.beforeHandle();
@@ -56,7 +55,7 @@ public class MappedAuditInterceptor implements Interceptor {
 				Object result = invocation.proceed();
 				if (handler != null && result instanceof Integer && ((Integer) result) > 0) {
 					handler.afterHandle();
-					eventContextAware.processEvent(eventContext);
+					changedContext.triggerEvents(changedContextProvider.getConsumers());
 				}
 				return result;
 			}
