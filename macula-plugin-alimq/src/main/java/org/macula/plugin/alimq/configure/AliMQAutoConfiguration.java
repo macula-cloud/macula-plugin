@@ -1,8 +1,9 @@
-package org.macula.cloud.mq.configure;
+package org.macula.plugin.alimq.configure;
 
 import java.util.List;
 
-import org.macula.cloud.mq.AliMQMessageListener;
+import org.macula.plugin.alimq.AliMQMessageListener;
+
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext;
 import org.springframework.context.ApplicationListener;

@@ -1,4 +1,4 @@
-package org.macula.cloud.mq;
+package org.macula.plugin.alimq;
 
 import java.util.List;
 

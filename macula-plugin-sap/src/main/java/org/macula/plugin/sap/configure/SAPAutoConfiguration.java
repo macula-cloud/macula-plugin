@@ -7,6 +7,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
 
+import javax.annotation.PostConstruct;
+
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.hibersap.annotations.Bapi;
 import org.hibersap.configuration.AnnotationConfiguration;
@@ -24,12 +27,15 @@ import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.util.ClassUtils;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Slf4j
 @Configuration
 @EnableConfigurationProperties(JcoConfig.class)
 public class SAPAutoConfiguration {
+
+	@PostConstruct
+	public void postConstruct() {
+		log.debug("[Macula] |- Plugin [SAP Plugin] Auto Configure.");
+	}
 
 	@Bean
 	public SessionManagerConfig createSessionManagerConfig(JcoConfig config) {
@@ -38,7 +44,7 @@ public class SAPAutoConfiguration {
 			String key = entry.getKey().toLowerCase();
 			String value = entry.getValue();
 			if (!key.contains("-")) {
-				log.info("Set property {} -> {} ", key, value);
+				log.trace("[Macula] |- [SAP SessionManagerConfig] Set property {} -> {} ", key, value);
 				sessionManagerConfig.setProperty(entry.getKey(), value);
 			}
 		}
@@ -47,7 +53,7 @@ public class SAPAutoConfiguration {
 			String value = entry.getValue();
 			if (key.contains("-")) {
 				key = StringUtils.replaceChars(entry.getKey(), '-', '.');
-				log.info("Set property {} -> {} ", key, value);
+				log.trace("[Macula] |- [SAP SessionManagerConfig] Set property {} -> {} ", key, value);
 				sessionManagerConfig.setProperty(entry.getKey(), value);
 			}
 		}
@@ -57,17 +63,22 @@ public class SAPAutoConfiguration {
 			String className = entry.getValue();
 			sessionManagerConfig.addAnnotatedClass(className);
 		}
+
+		log.trace("[Macula] |- Bean [SAP SessionManagerConfig] Auto Configure.");
 		return sessionManagerConfig;
 	}
 
 	@Bean
 	public SessionManager getSessionManager(SessionManagerConfig config) {
 		AnnotationConfiguration configuration = new AnnotationConfiguration(config);
+
+		log.trace("[Macula] |- Bean [SAP SessionManager] Auto Configure.");
 		return configuration.buildSessionManager();
 	}
 
 	@Bean
 	public SAPExecution getSAPExecution(SessionManager sessionManager) {
+		log.trace("[Macula] |- Bean [SAP SAPExecution] Auto Configure.");
 		return new SAPExecution(sessionManager);
 	}
 

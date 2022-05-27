@@ -14,7 +14,7 @@ import org.springframework.util.ClassUtils;
 /**
  * <p> <b>HandlerChainSerializer</b> 是DataProcessorChain的构建工厂. </p>
  * 
- * @since 2011-1-28
+ 
  * @author Wilson Luo
  * @version $Id: HandlerChainSerializer.java 3807 2012-11-21 07:31:51Z wilson $
  */

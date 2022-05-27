@@ -1,4 +1,4 @@
-package org.macula.cloud.mq.configure;
+package org.macula.plugin.alimq.configure;
 
 import java.util.Map;
 import java.util.Properties;

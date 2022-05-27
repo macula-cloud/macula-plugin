@@ -9,7 +9,7 @@
 	<description>Macula Plugin Projects</description>
 
 	<properties>
-			<!-- Project Settings-->
+		<!-- Project Settings-->
 		<java.version>1.8</java.version>
 		<resource.delimiter>@</resource.delimiter>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
