@@ -1,5 +1,0 @@
-macula:
-  cloud:    security:      white-list: /**
-spring:
-   main:
-    allow-bean-definition-overriding: true
