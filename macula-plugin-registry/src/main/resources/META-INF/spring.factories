@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.AutoConfigurationImportFilter=\
-	org.macula.plugin.registry.MultiRegistryExcludeFilter

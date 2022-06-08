@@ -9,7 +9,7 @@
 	<description>Macula Plugin Projects</description>
 
 	<properties>
-			<!-- Project Settings-->
+		<!-- Project Settings-->
 		<java.version>1.8</java.version>
 		<resource.delimiter>@</resource.delimiter>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
@@ -33,15 +33,15 @@
 	</licenses>
 
 	<scm>
-		<url>https://github.com/macula-cloud/macula-plugin</url>
-		<connection> scm:git:git://github.com/macula-cloud/macula-plugin.git</connection>
-		<developerConnection>scm:git:ssh://github.com/macula-cloud/macula-plugin.git</developerConnection>
+		<url>https://github.com/macula-cloud/macula-plugins</url>
+		<connection> scm:git:git://github.com/macula-cloud/macula-plugins.git</connection>
+		<developerConnection>scm:git:ssh://github.com/macula-cloud/macula-plugins.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
 	<developers>
 		<developer>
-			<id>macula-plugin</id>
+			<id>macula-cloud</id>
 			<name>Jokeway</name>
 			<email>jokeway@gmail.com</email>
 			<timezone>+8</timezone>
@@ -49,15 +49,15 @@
 	</developers>
 
 	<modules>
-		<module>macula-plugin-alimq</module>
-		<module>macula-plugin-cainiao</module>
-		<module>macula-plugin-datalog</module>
-		<module>macula-plugin-dataset</module>
-		<module>macula-plugin-execlog</module>
-		<module>macula-plugin-flow</module>
-		<module>macula-plugin-registry</module>
-		<module>macula-plugin-sap</module>
-		<module>macula-plugin-social</module>
+		<module>macula-plugins-alimq</module>
+		<module>macula-plugins-cainiao</module>
+		<module>macula-plugins-datalog</module>
+		<module>macula-plugins-dataset</module>
+		<module>macula-plugins-execlog</module>
+		<module>macula-plugins-flow</module>
+		<module>macula-plugins-registry</module>
+		<module>macula-plugins-sap</module>
+		<module>macula-plugins-social</module>
 	</modules>
 
 	<dependencies>
@@ -100,47 +100,47 @@
 		<dependencies>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>macula-plugin-alimq</artifactId>
+				<artifactId>macula-plugins-alimq</artifactId>
 				<version>${macula-plugin.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>macula-plugin-cainiao</artifactId>
+				<artifactId>macula-plugins-cainiao</artifactId>
 				<version>${macula-plugin.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>macula-plugin-datalog</artifactId>
+				<artifactId>macula-plugins-datalog</artifactId>
 				<version>${macula-plugin.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>macula-plugin-dataset</artifactId>
+				<artifactId>macula-plugins-dataset</artifactId>
 				<version>${macula-plugin.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>macula-plugin-execlog</artifactId>
+				<artifactId>macula-plugins-execlog</artifactId>
 				<version>${macula-plugin.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>macula-plugin-flow</artifactId>
+				<artifactId>macula-plugins-flow</artifactId>
 				<version>${macula-plugin.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>macula-plugin-registry</artifactId>
+				<artifactId>macula-plugins-registry</artifactId>
 				<version>${macula-plugin.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>macula-plugin-sap</artifactId>
+				<artifactId>macula-plugins-sap</artifactId>
 				<version>${macula-plugin.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>macula-plugin-social</artifactId>
+				<artifactId>macula-plugins-social</artifactId>
 				<version>${macula-plugin.version}</version>
 			</dependency>
 

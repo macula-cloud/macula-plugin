@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-	org.macula.plugin.execlog.configure.ExecutionLogAutoConfiguration
